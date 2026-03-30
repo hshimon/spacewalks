@@ -1,6 +1,6 @@
 # https://data.nasa.gov/resource/eva.json (with modifications)
 data_f_file = 'eva-data.json'
-data_t_file = 'eva_data_analysis.csv'
+data_t_file = 'eva-data.csv'
 g_file = 'cumulative_eva_graph.png'
 fieldnames <- c("EVA #", "Country", "Crew    ", "Vehicle", "Date", "Duration", "Purpose")
 
