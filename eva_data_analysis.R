@@ -21,9 +21,9 @@ write.csv(data_t_file)
 
 
 time <- c()
+library(lubridate)
 date = Date()
 
-library(lubridate)
 j=1
 for (i in rownames(data)){
     print(data[j, ])
