@@ -1,20 +1,40 @@
+# Name: Heather Shimon
+# Email: heather.shimon@wisc.edu
+# Date: 2026-03-31
+# Description: learning reproducible software practices in R
+
+
 # https://data.nasa.gov/resource/eva.json (with modifications)
+
+# Files
 input_file = 'eva-data.json'
 output_file = 'eva-data.csv'
 graph_file = 'cumulative_eva_graph.png'
 
+# Packages
 library(jsonlite)
 library(lubridate)
-library(tidyverse)
+library(tidyverse) # added tidyverse package to plot in ggplot
 
-j_l <- read_json(input_file)
-data=as.data.frame(j_l[[1]])
+# Updated to tidyverse function in step 1)
+# j_l <- read_json(input_file)
+# data=as.data.frame(j_l[[1]])
 
-for( i in 2:374){
-  r = j_l[[i]]
-    print(r)
-    data =merge(data, as.data.frame(r),  all=TRUE)
-}
+# 1) read in the data as a tibble
+eva_tbl <- fromJSON(input_file) %>% 
+  as_tibble()
+
+
+# for( i in 2:374){
+#   r = j_l[[i]]
+#     print(r)
+#     data =merge(data, as.data.frame(r),  all=TRUE)
+# }
+
+
+
+
+
 #data.pop(0)
 ## Comment out this bit if you don't want the spreadsheet
 write.csv(output_file)
@@ -61,7 +81,7 @@ date <- df$date
 time <- df$time
 cumulative_time <- duration_dt[2:length(duration_dt)]
 
-## Switch from base R to ggplot2 
+## Switched original code from base R to ggplot2 
 
 cumulative_spacetime_plot <- ggplot(df, aes(x = date, y = cumulative_time)) +  
   geom_point() +
